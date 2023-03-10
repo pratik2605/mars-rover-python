@@ -20,3 +20,6 @@ Assume that the square directly North from (x, y) is (x, y+1).
 
 # Output
 Final position: (5, 1, E)
+
+# Try it out (online IDE)
+https://replit.com/@pratik2605/Mars-Rover-Technical-Challange-in-Python?v=1
