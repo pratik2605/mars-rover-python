@@ -1,38 +1,42 @@
 # Define the initial position and direction of the rover
-x, y, direction = input("Enter initial position (x, y) and direction (N/S/E/W): ").split()
+try:
+    x, y, direction = input(
+        "Enter initial position (x, y) and direction (N/S/E/W): ").split()
+except ValueError:
+    raise ValueError('Input should be in this format 3 3 E')
+
 x = int(x)
 y = int(y)
 
 # Define the plateau size
-max_x, max_y = input("Enter the plateau size (x, y): ").split()
-max_x = int(max_x)
-max_y = int(max_y)
+try:
+    max_x, max_y = input(
+        "Enter the plateau size (x, y) optional default size 50 50: "
+    ) or '50 50'.split()
+except ValueError:
+    raise ValueError('Plateau size should be in this format 50 50')
+
+max_x = int(max_x or 50)
+max_y = int(max_y or 50)
 
 # Define the rover's movements
 movements = input("Enter rover movements: ")
+acceptable_movements = set('LRM')  # Validate movements
+if not set(movements).issubset(acceptable_movements):
+    raise ValueError('Enter valid rover movements(L R M)')
+
 
 # Define function for turning the rover
 def turn(direction, side):
     if direction == 'N':
-        if side == 'L':
-            return 'W'
-        elif side == 'R':
-            return 'E'
+        return 'W' if side == 'L' else 'E'
     elif direction == 'S':
-        if side == 'L':
-            return 'E'
-        elif side == 'R':
-            return 'W'
+        return 'E' if side == 'L' else 'W'
     elif direction == 'E':
-        if side == 'L':
-            return 'N'
-        elif side == 'R':
-            return 'S'
+        return 'N' if side == 'L' else 'S'
     elif direction == 'W':
-        if side == 'L':
-            return 'S'
-        elif side == 'R':
-            return 'N'
+        return 'S' if side == 'L' else 'N'
+
 
 # Define function for moving the rover forward
 def move_forward(x, y, direction):
@@ -45,6 +49,7 @@ def move_forward(x, y, direction):
     elif direction == 'W':
         x -= 1
     return x, y
+
 
 # Loop through the movements and update the rover's position and direction
 for movement in movements:
