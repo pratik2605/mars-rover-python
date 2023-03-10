@@ -1,7 +1,5 @@
 # mars-rover-python
-Mars Rover Technical Challenge
-
-MARS ROVERS
+Mars Rover Technical Challenge in Python
 
 A squad of robotic rovers are to be landed by NASA on a plateau on Mars.
 
@@ -14,3 +12,11 @@ To control a rover, NASA sends a simple string of letters. The possible letters 
 'M' means move forward one grid point and maintain the same heading.
 
 Assume that the square directly North from (x, y) is (x, y+1).
+
+# Input
+1) Enter initial position (x, y) and direction (N/S/E/W) e.g: 3 3 E
+2) Enter the plateau size (x, y) e.g: 50 50
+3) Enter rover movements e.g: MMRMMRMRRM
+
+# Output
+Final position: (5, 1, E)
